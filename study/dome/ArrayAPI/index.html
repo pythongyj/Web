@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>数组API</title>
+  </head>
+  <body>
+    <script>
+      let arr = [1, 2, 3, 5, 6, 7, 8, 8, 8, 6, 54, 3, 2, 1, 32];
+      console.log(arr.length);
+
+      // forEach遍历数组，回调接收三个参数，item当前项 index当前索引下标，arr遍历的数组
+      arr.forEach(function(item, index, arr) {
+        console.log(item, index, arr);
+      });
+      // 添加元素到数组末尾
+      arr.push(10);
+      console.log(arr);
+
+      // 删除数组末尾的元素
+      arr.pop();
+      console.log(arr);
+
+      // 删除数组最前面的元素
+      arr.shift();
+      console.log(arr);
+
+      // 添加元素到数组最前面
+      arr.unshift(22222);
+      console.log(arr);
+
+      // 找出元素在数组中的索引
+      arr.indexOf(8);
+      console.log(arr.indexOf(8)); //返回的是找到的第一个元素的下标，找到后就返回了，不再找后面的了
+
+      // 通过索引删除某个元素
+      arr.splice(8, 5); //两个参数，第一个参数是数组的下标（要删除的起始位置），第二个参数是要删除的元素的个数
+      console.log(arr);
+
+      // 复制一个数组  可以接收参数 对当前数组进行部分复制  返回的是新的数组
+      var newArr = arr.slice();
+      console.log(newArr);
+
+      // 访问数组中的元素
+      console.log(arr[3]);
+
+      // 判断一个  对象  是不是 数组
+      console.log(Array.isArray(arr));
+
+      // 把一个数组进行反转
+      arr.reverse();
+      console.log(arr);
+
+      // 对一个数组进行排序   并返回当前的数组
+      // 排序排的是数组的每个元素的第一个字符的大小为依据
+      arr.sort();
+      console.log(arr); // [32, 1, 8, 8, 7, 6, 5, 3, 2, 22222] [1, 2, 22222, 3, 32, 5, 6, 7, 8, 8]
+
+      /*-----------------------下面的方法不会改变原来的数组---------------------------*/
+      // 以某个字符 把数组中的所有数据进行拼接
+      var newArr3 = arr.join("*");
+      console.log(newArr3);
+
+      //   判断当前数组是否包含某指定的值，如果是返回 true，否则返回 false。
+      console.log(arr.includes(32));
+
+      //   返回一个由所有数组元素组合而成的本地化后的字符串
+      console.log(arr.toLocaleString());
+    </script>
+  </body>
+</html>

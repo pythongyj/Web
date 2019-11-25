@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>bootbox的使用学习</title>
+    <link rel="stylesheet" href="./bootstrap.min.css" />
+  </head>
+  <body>
+    <input type="text" id="locales" value="ar" />
+    <script src="../jquery.min.js"></script>
+    <script src="./bootbox.min.js"></script>
+    <script src="./bootstrap.min.js"></script>
+    <script>
+      //  alert弹出框
+      //    bootbox.alert('请求成功了',function (result) {
+      //        bootbox.alert('哈哈哈！我又出来了')
+      //    })
+      //  确定框
+      //   bootbox.confirm("你要删除？", function(result) {
+      //     // console.log(result);
+      //     if (result) {
+      //       bootbox.alert("好吧！已经删除了，太遗憾了！");
+      //     } else {
+      //       bootbox.alert("删除取消！你做了一个正确的决定");
+      //     }
+      //   });
+    //   var locale = $("#locales").val();
+    //   console.log(locale);
+      
+      bootbox.confirm({
+        title: "做的一次决定",
+        message: "我是一条咸鱼?",
+        // locale: locale,
+        buttons: {
+          confirm: {
+            label: "确定",
+            className: "btn-success"
+          },
+          cancel: {
+            label: "取消",
+            className: "btn-danger"
+          }
+        },
+        callback: function(result) {
+          //   console.log("This was logged in the callback: " + result);
+          if (result) {
+            bootbox.alert("好吧！已经删除了，太遗憾了！");
+          } else {
+            bootbox.alert("删除取消！你做了一个正确的决定");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

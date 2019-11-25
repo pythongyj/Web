@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Day.js的使用学习</title>
+  </head>
+  <body>
+    <!-- day.js插件文件 -->
+    <script src="./dayjs.min.js"></script>
+    <!-- 转换相对时间插件 -->
+    <script src="./relative.min.js"></script>
+    <!-- 把格式转换为中文的插件 -->
+    <script src="./zh_cn.js"></script>
+    <script>
+      // 具体使用  可以查询官网Github API
+
+      // 引入js文件的时候必须这样写
+      // import导入的时候直接写变量名
+      dayjs.extend(dayjs_plugin_relativeTime);
+      var time = new Date();
+      var time2 = dayjs(time)
+        .add(-1, "year")
+        .format("YYYY-MM-DD");
+      console.log(
+        time2,
+        dayjs(time)
+          .locale("zh-cn")
+          .format("YYYY-MM-DD")
+      );
+      var ceshi = dayjs(time).isBefore(dayjs(time2));
+      console.log(
+        dayjs(time2)
+          .locale("zh-cn")
+          .toNow()
+      );
+    </script>
+  </body>
+</html>
