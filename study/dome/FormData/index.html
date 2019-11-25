@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>FormData对象</title>
+  </head>
+  <body>
+    <!-- 收集表单的数据 -->
+
+    <form id="myform">
+      <div>
+        <label for="">姓名</label>
+        <input type="text" id="userName" name="userName" />
+      </div>
+      <div>
+        <label for="">密码</label>
+        <input type="password" id="userPassword" name="userPassword" />
+      </div>
+      <div>
+        <label for="">性别</label>
+        <input type="radio" id="genderMale" name="userGender" value="male" />男
+        <input
+          type="radio"
+          id="genderFemale"
+          name="userGender"
+          value="female"
+        />女
+      </div>
+      <div><button id="btn" type="button">注册</button></div>
+    </form>
+    <script src="../jquery.min.js"></script>
+    <script>
+      $("#btn").click(function() {
+        // 收集数据
+        // 方法一：一项一项收集   繁杂  不方便
+        // 方法二：通过FormData对象收集数据
+        // 格式： var fd = new FormData(表单元素的dom对象)
+        var fd = new FormData(document.querySelector("#myform"));
+        console.log(fd); //啥也没有
+        // 查看fd对象中保存的表单元素的值:fd.get('表单元素的name属性值')
+        console.log(fd.get("userName")); //返回输入的数据
+        // formdata使用场景为：表单提交数据（ajax请求） 使用这种方式请求   需要设置请求头为formdata请求头
+        // 1.fd默认有请求头   不需要设置
+        // 2.传的数据的属性名为表单项的name属性的属性值   即：必须要有name值
+        // 3.把fd当做参数直接传递就好
+      });
+    </script>
+  </body>
+</html>

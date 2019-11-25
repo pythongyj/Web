@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>图片预览功能</title>
+    <style>
+      div {
+        width: 400px;
+        height: 400px;
+        margin: 200px auto;
+      }
+      img {
+        width: 400px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="../img/588025e7753cc.jpg" alt="" />
+      <input type="file" value="选择图片" />
+    </div>
+  </body>
+  <script src="../jquery.min.js"></script>
+  <script>
+    $("input").change(function() {
+      console.log(this);
+      //   把它当做一个对象展开  console.dir(this);
+      //   this就是当前的文件域  有一个属性files
+      //   files用来收集用户选择的文件  支持多选
+      //   选中一张就是files[0]
+      console.dir(this);
+      console.log(this.files[0]);
+      var imgs = this.files[0];
+      //  API 格式： var 临时的地址 = URL.createObjectURL(imgs[文件对象])
+      //  功能： 给一个对象临时的生成一个地址，这个地址可以找到这个对象
+      //  临时地址使用的周期：和页面的声明周期相同  关闭页面  地址失效
+      var path = URL.createObjectURL(imgs);
+      console.log(path);
+      $("img").prop("src", path);
+    });
+  </script>
+</html>
